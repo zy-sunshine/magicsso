@@ -6,7 +6,10 @@ function sso_get_user($username)
     $return = call_user_func(uc_api_post, 'user', 'get_user', array('username'=>$username, 'isuid'=>$isuid));
     return uc_unserialize($return);
 }
-
+function sso_get_user_info($tgt){
+    // TODO: check this tgt valid and expire time.
+    return array('id' => 0, 'un' => 'admin', 'email' => 'zy.netsec@gmail.com'); // data for debug test.
+}
 function uc_stripslashes($string) {
     !defined('MAGIC_QUOTES_GPC') && define('MAGIC_QUOTES_GPC', get_magic_quotes_gpc());
     if(MAGIC_QUOTES_GPC) {
