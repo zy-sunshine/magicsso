@@ -25,3 +25,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# for Symfony test cache log directories
+/tests/Symfony/app/cache/*
+/tests/Symfony/app/logs/*
+
+# TODO: dev and release Symfony cache log directories
