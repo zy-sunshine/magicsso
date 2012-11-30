@@ -1,0 +1,27 @@
+complete:
+    user `role` `authentication` `authorization` `active flag and so on`
+    `salt flag` `email send through gmail`
+
+TODO:
+0. SignIn feature, maybe we can use *discuz* or wordpress database to sync user
+   into magicsso.
+   1) active user in magicsso.
+    use email verification set `active flag`.
+
+1. User Profile show and change password page.
+
+2. User Login Logout normal form (css + nice ui html)
+    Logout reference : http://symfony.com/doc/current/book/security.html
+
+3. User `active user` and `get user information` from discuz wordpress
+   1) active user
+    This is a register feature.
+   2) get user information
+    In order to check register user whether valid.
+
+6. sso verification with discuz and wordpress.
+   token generation and dispatch.
+
+5. Administrator Manage Page
+   manage user role and so on...
+

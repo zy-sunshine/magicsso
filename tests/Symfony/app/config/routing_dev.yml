@@ -27,5 +27,4 @@ _main:
     resource: routing.yml
 
 _magicsso:
-    pattern: /magicsso
-    defaults: { _controller: MagicSSOBundle:Home:index }
+    resource: "@MagicSSOBundle/Resources/config/routing.yml"

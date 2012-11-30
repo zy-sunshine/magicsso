@@ -1,0 +1,29 @@
+_index:
+    pattern: /magicsso
+    defaults: { _controller: MagicSSOBundle:Home:index }
+
+_category:
+    pattern: /magicsso/category
+    defaults: { _controller: MagicSSOBundle:Home:category }
+
+_admin:
+    pattern: /admin/test
+    defaults: { _controller: MagicSSOBundle:Home:admintest }
+
+login:
+    pattern:   /login
+    defaults: { _controller: MagicSSOBundle:Security:login }
+login_check:
+    pattern:   /login_check
+
+_internal:
+    pattern: /_internal
+    defaults: { _controller: MagicSSOBundle:Security:_internal }
+
+cart_checkout:
+    pattern: /cart/checkout
+    defaults: { _controller: MagicSSOBundle:Security:cartCheckout }
+
+sec_annotation:
+    pattern: /sec_annotation
+    defaults: { _controller: MagicSSOBundle:Security:sec_annotation }
