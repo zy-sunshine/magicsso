@@ -29,5 +29,6 @@ pip-log.txt
 # for Symfony test cache log directories
 /tests/Symfony/app/cache/*
 /tests/Symfony/app/logs/*
+/tests/Symfony/src/MagicSSO/Bundle/Resources/config/parameters.yml
 
 # TODO: dev and release Symfony cache log directories
