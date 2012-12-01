@@ -3,6 +3,7 @@ imports:
     - { resource: @MagicSSOBundle/Resources/config/parameters.yml }
     # - { resource: security.yml }
     - { resource: @MagicSSOBundle/Resources/config/security.yml }
+    - { resource: @MagicSSOBundle/Resources/config/config.yml }
 
 framework:
     #esi:             ~
