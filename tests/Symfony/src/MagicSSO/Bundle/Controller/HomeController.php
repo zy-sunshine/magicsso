@@ -2,15 +2,20 @@
 
 namespace MagicSSO\Bundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
+
 use MagicSSO\Bundle\Entity\User;
 use MagicSSO\Bundle\Entity\Category;
 
-use Symfony\Bundle\FrameworkBundle\Templating\GlobalVariables;
 
 class HomeController extends Controller
 {
+    /**
+     * @Secure(roles="ROLE_USER")
+     */
     public function indexAction()
     {
         /*
@@ -18,6 +23,22 @@ class HomeController extends Controller
          * or @Template annotation as demonstrated in DemoController.
          *
          */
+        $content = '';
+        return $this->render('MagicSSOBundle:Home:index.html.twig', array('content' => $content));
+        return $this->userAction();
+    }
+
+    public function testAction(){
+        $t = $this->get('translator')->trans('layout.login', array(), 'FOSUserBundle', 'zh_CN');
+        $content = $t;
+        $request = $this->getRequest();
+
+        $locale = $request->getLocale();
+        var_dump($locale);
+        $request->setLocale('zh_CN');
+        return $this->render('MagicSSOBundle:Test:index.html.twig', array('content' => $content));
+    }
+    public function userAction(){
         $content = $this->container->getParameter('magicsso.email.from');
 
         // $conn = $this->get('database_connection');
@@ -28,13 +49,13 @@ class HomeController extends Controller
         // $user = $this->_changePw("test username", "new password");
 
         // $user = $this->_delUser(4);
-        $users = $this->__getRepo()->findAllUserByEmail("test email");
+        // $users = $this->__getRepo()->findAllUserByEmail("test email");
         //var_dump($users);
 
         $SITE = array('TITLE' => 'TestTitle');
         // return $this->render('MagicSSOBundle:Home:index.html.twig', array('SITE' => $SITE, 
         //     'content' => $content));
-        return new Response('Created user id '.$user->getId().' name '.$user->getUn().' email '.$user->getEmail().' password '.$user->getPw());
+        return new Response('Created user id '.$user->getId().' name '.$user->getUsername().' email '.$user->getEmail().' password '.$user->getPassword());
     }
     public function categoryAction(){
         $this->addCategory();

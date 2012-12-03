@@ -29,7 +29,7 @@ security:
         administrators:
             entity: { class: MagicSSO\Bundle\Entity\User }
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
         # main:
         #     entity: { class: MagicSSO\Bundle\Entity\User, property: un }
         # in_memory:

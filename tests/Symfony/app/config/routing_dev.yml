@@ -1,5 +1,5 @@
 _welcome:
-    pattern:  /
+    pattern:  /acme
     defaults: { _controller: AcmeDemoBundle:Welcome:index }
 
 _demo_secured:
@@ -28,3 +28,4 @@ _main:
 
 _magicsso:
     resource: "@MagicSSOBundle/Resources/config/routing.yml"
+

@@ -1,0 +1,15 @@
+# Security
+# messages is the default domain. and zh_CN is default locale
+# e.g. {"source en"|trans({}, "app domain", "another locale like fr/en")}
+#
+# translate po can be tree structure:
+#
+# { 'login.confirm'|trans }
+#
+# login:
+#   confirm: 'que ding'
+#
+# Notice: If change template can not work, please run locale_cache_clear.sh to clean all cache,
+# or reference symfony document debug part.
+
+"Bad credentials": 用户名或密码不正确

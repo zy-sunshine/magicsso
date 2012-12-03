@@ -1,8 +1,93 @@
 <html>
 <head>
-<title>{{ SITE.TITLE }}{% block subtitle %}{% endblock %}</title>
+  <title>{% block title %}{{ SITE.title }}{% endblock %} - {% block subtitle %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Le styles -->
+  <link href="{{ STATIC_URL }}jquery-ui/css/smoothness/jquery-ui-1.8.22.custom.css" rel="stylesheet">
+  <link href="{{ STATIC_URL }}twitter-bootstrap/css/bootstrap.css" rel="stylesheet">
+  <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.2.js"></script>
+  {% block style %}{% endblock %}
+  <link href="{{ STATIC_URL }}twitter-bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ IMAGE_URL }}favicon.ico">
 </head>
 <body>
-  {% block content %}{% endblock %}
+  <!-- header start  -->
+  <div id="header">
+  {% block header %}
+  <a href="{{ path('sso_home') }}">{{ "Home"|trans }}</a> | 
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+      <a href="{{ path('fos_user_security_logout') }}">
+            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+      </a>
+    {% else %}
+      <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+    {% endif %}
+  <hr />
+  {% endblock %}
+  </div>
+  <!-- header end  -->
+
+  <!-- sidebar start -->
+  <div id="sidebar" class="span2">
+    <!--
+<a href="{{ path('fos_user_security_login') }}">{{ 'fos_user_security_login'|trans }}</a><br />
+<a href="{{ path('fos_user_security_check') }}">{{ 'fos_user_security_check'|trans }}</a><br />
+<a href="{{ path('fos_user_security_logout') }}">{{ 'fos_user_security_logout'|trans }}</a><br />
+<a href="{{ path('fos_user_registration_register') }}">{{ 'Sign Up'|trans }}</a><br />
+-->
+  <a href="{{ path('fos_user_profile_show') }}">{{ 'Show Profile'|trans }}</a><br />
+  <a href="{{ path('fos_user_profile_edit') }}">{{ 'Edit Profile'|trans }}</a><br />
+  <a href="{{ path('fos_user_change_password') }}">{{ 'Change Password'|trans }}</a><br />
+  <a href="{{ path('fos_user_resetting_request') }}">{{ 'Reset Password'|trans }}</a><br />
+
+  <a href="{{ path('fos_user_registration_check_email') }}">{{ '_registration_check_email'|trans }}</a><br />
+  {% set token="testtoken" %}
+  <a href="{{ path('fos_user_registration_confirm', {'token': token}) }}">{{ '_registration_confirm'|trans }}</a><br />
+  <a href="{{ path('fos_user_registration_confirmed') }}">{{ '_registration_confirmed'|trans }}</a><br />
+
+  <a href="{{ path('fos_user_resetting_send_email') }}">{{ '_resetting_send_email'|trans }}</a><br />
+  <a href="{{ path('fos_user_resetting_check_email') }}">{{ 'Reset Check Email'|trans }}</a><br />
+  <a href="{{ path('fos_user_resetting_reset', {'token': token}) }}">{{ 'fos_user_resetting_reset'|trans }}</a><br />
+  
+  </div>
+  <!-- sidebar end -->
+
+  <!-- content start  -->
+  <div id="content" class="span10">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <!-- content end  -->
+
+  <!-- footer start  -->
+  <div id="footer">
+      {% block footer %}
+      <hr />
+      {% endblock %}
+  </div>
+  <!-- footer end  -->
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{{ STATIC_URL }}js/underscore.js"></script>
+  <script src="{{ STATIC_URL }}js/underscore.string.js"></script>
+  <script src="{{ STATIC_URL }}jquery-ui/js/jquery-ui-1.8.22.custom.min.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-transition.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-alert.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-modal.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-dropdown.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-scrollspy.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-tab.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-tooltip.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-popover.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-button.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-collapse.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-carousel.js"></script>
+  <script src="{{ STATIC_URL }}twitter-bootstrap/js/bootstrap-typeahead.js"></script>
+  {% block script %}{% endblock %}
 </body>
 </html>

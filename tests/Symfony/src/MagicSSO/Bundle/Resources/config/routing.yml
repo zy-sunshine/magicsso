@@ -1,5 +1,5 @@
-_index:
-    pattern: /magicsso
+sso_home:
+    pattern: /
     defaults: { _controller: MagicSSOBundle:Home:index }
 
 _category:
@@ -28,6 +28,9 @@ sec_annotation:
     pattern: /sec_annotation
     defaults: { _controller: MagicSSOBundle:Security:sec_annotation }
 
+test:
+    pattern: /test
+    defaults: {_controller: MagicSSOBundle:Home:test}
 
 # fos
 fos_user_security:

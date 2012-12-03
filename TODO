@@ -8,10 +8,22 @@ TODO:
    1) active user in magicsso.
     use email verification set `active flag`.
 
+complete 70%
+  finish:
+    * use common user registration step
+    * overriding templates, make up UI with bootstrap, and include jquery, jquery-ui, underscore.
+    TODO: check symfony's bootstrap.php.cache about optimize bootstrap load.
+    * test i18n feature pass.
+  next TODO:
+    reference https://github.com/FriendsOfSymfony/FOSUserBundle
+    to enable email validation, and some other features.
+
 1. User Profile show and change password page.
+  complete 100%
 
 2. User Login Logout normal form (css + nice ui html)
     Logout reference : http://symfony.com/doc/current/book/security.html
+  complete 100%
 
 3. User `active user` and `get user information` from discuz wordpress
    1) active user
@@ -24,4 +36,3 @@ TODO:
 
 5. Administrator Manage Page
    manage user role and so on...
-

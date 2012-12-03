@@ -1,0 +1,14 @@
+{% extends 'MagicSSOBundle::base.html.twig' %}
+
+{% block subtitle %}
+Subtitle of index.html
+{% endblock %}
+
+{% block content %}
+This is Content xxx. {{ content }}
+<br />
+{{ "Bad credentials"|trans({}, "FOSUserBundle", 'en') }}
+<br />
+{{ "layout.login"|trans({}, "FOSUserBundle") }}
+<br />
+{% endblock %}
