@@ -23,7 +23,8 @@
             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
       </a>
     {% else %}
-      <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+      <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> OR 
+      <a href="{{ path('fos_user_registration_register') }}">{{ 'Sign Up'|trans }}</a><br />
     {% endif %}
   <hr />
   {% endblock %}
@@ -36,12 +37,11 @@
 <a href="{{ path('fos_user_security_login') }}">{{ 'fos_user_security_login'|trans }}</a><br />
 <a href="{{ path('fos_user_security_check') }}">{{ 'fos_user_security_check'|trans }}</a><br />
 <a href="{{ path('fos_user_security_logout') }}">{{ 'fos_user_security_logout'|trans }}</a><br />
-<a href="{{ path('fos_user_registration_register') }}">{{ 'Sign Up'|trans }}</a><br />
 -->
   <a href="{{ path('fos_user_profile_show') }}">{{ 'Show Profile'|trans }}</a><br />
   <a href="{{ path('fos_user_profile_edit') }}">{{ 'Edit Profile'|trans }}</a><br />
   <a href="{{ path('fos_user_change_password') }}">{{ 'Change Password'|trans }}</a><br />
-  <a href="{{ path('fos_user_resetting_request') }}">{{ 'Reset Password'|trans }}</a><br />
+  <a href="{{ path('fos_user_resetting_request') }}">{{ '[ADMIN]Reset Password'|trans }}</a><br />
 
   <a href="{{ path('fos_user_registration_check_email') }}">{{ '_registration_check_email'|trans }}</a><br />
   {% set token="testtoken" %}

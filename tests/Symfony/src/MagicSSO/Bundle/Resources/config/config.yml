@@ -4,6 +4,25 @@ fos_user:
     firewall_name: main
     user_class: MagicSSO\Bundle\Entity\User
 
+    # from_email:
+    #     address:        magiclinuxgroup@gmail.com
+    #     sender_name:    LinuxFans Community
+    registration:
+        confirmation:
+            from_email:
+                address:        magiclinuxgroup@gmail.com
+                sender_name:    LinuxFans Community Registration
+            template: MagicSSOBundle:User:registration.email.twig
+            enabled:    true
+
+    resetting:
+        email:
+            from_email:
+                address:        magiclinuxgroup@gmail.com
+                sender_name:    LinuxFans Community Resetting
+            template: MagicSSOBundle:User:resetting.email.twig
+    service:
+        mailer: fos_user.mailer.twig_swift
 twig:
     # ...
     globals:
