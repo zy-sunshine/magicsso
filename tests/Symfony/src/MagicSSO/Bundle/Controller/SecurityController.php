@@ -46,4 +46,21 @@ class SecurityController extends Controller
         return new Response('sec_annotationAction page');
 
     }
+
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function ssoAddRoleAction()
+    {
+
+        // $this->addRole();
+        return new Response('FOS_AddRoleAction');
+    }
+    private function _addRole()
+    {
+        $userManager = $this->container->get('fos_user.user_manager');
+        $user = $userManager->findUserByUsername('test5');
+        $user->addRole('ROLE_ADMIN');
+        $userManager->updateUser($user);
+    }
 }
