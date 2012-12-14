@@ -10,12 +10,6 @@ _admin:
     pattern: /admin/test
     defaults: { _controller: MagicSSOBundle:Home:admintest }
 
-# login:
-#     pattern:   /login
-#     defaults: { _controller: MagicSSOBundle:Security:login }
-# login_check:
-#     pattern:   /login_check
-
 _internal:
     pattern: /_internal
     defaults: { _controller: MagicSSOBundle:Security:_internal }
@@ -33,8 +27,8 @@ test:
     defaults: {_controller: MagicSSOBundle:Home:test}
 
 # fos
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+# fos_user_security:
+#     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
@@ -53,7 +47,37 @@ fos_user_change_password:
     prefix: /profile
 
 
+# login
+sso_security_login:
+    pattern: /login
+    defaults: { _controller: MagicSSOBundle:Security:login }
+
+sso_security_check:
+    pattern: /login_check
+    defaults: { _controller: MagicSSOBundle:Security:check }
+
+sso_security_logout:
+    pattern: /logout
+    defaults: { _controller: MagicSSOBundle:Security:logout }
+
 ############### Admin Manage ##################
 ssoAddRole:
     pattern: /addrole
     defaults: { _controller: MagicSSOBundle:Security:ssoAddRole }
+
+sso_admin_index:
+    pattern: /admin
+    defaults: { _controller: MagicSSOBundle:Admin:index }
+
+sso_admin_repairuser:
+    pattern: /admin/repairuser
+    defaults: { _controller: MagicSSOBundle:Admin:repairuser }
+    
+############### rpc api ##################
+rpcTest:
+    pattern: /rpc/test
+    defaults: { _controller: MagicSSOBundle:Rpc:test }
+
+rpcCheckTgt:
+    pattern: /rpc/checkTgt
+    defaults: { _controller: MagicSSOBundle:Rpc:checkTgt }

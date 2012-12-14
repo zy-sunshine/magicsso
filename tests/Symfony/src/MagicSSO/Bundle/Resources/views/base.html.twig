@@ -19,11 +19,11 @@
   <a href="{{ path('sso_home') }}">{{ "Home"|trans }}</a> | 
     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
       {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-      <a href="{{ path('fos_user_security_logout') }}">
+      <a href="{{ path('sso_security_logout') }}">
             {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
       </a>
     {% else %}
-      <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> OR 
+      <a href="{{ path('sso_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a> OR 
       <a href="{{ path('fos_user_registration_register') }}">{{ 'Sign Up'|trans }}</a><br />
     {% endif %}
   <hr />
@@ -33,15 +33,16 @@
 
   <!-- sidebar start -->
   <div id="sidebar" class="span2">
-    <!--
-<a href="{{ path('fos_user_security_login') }}">{{ 'fos_user_security_login'|trans }}</a><br />
-<a href="{{ path('fos_user_security_check') }}">{{ 'fos_user_security_check'|trans }}</a><br />
-<a href="{{ path('fos_user_security_logout') }}">{{ 'fos_user_security_logout'|trans }}</a><br />
--->
+  {% block sidebar %}
+  {% if app.user and app.user.hasRole('ROLE_ADMIN') %}
+  <a href="{{ path('fos_user_resetting_request') }}">{{ '[ADMIN]Reset Password'|trans }}</a><br />
+  <a href="{{ path('sso_admin_repairuser') }}">{{ 'Repair User'|trans }}</a><br />
+  <hr />
+  {% endif %}
   <a href="{{ path('fos_user_profile_show') }}">{{ 'Show Profile'|trans }}</a><br />
   <a href="{{ path('fos_user_profile_edit') }}">{{ 'Edit Profile'|trans }}</a><br />
   <a href="{{ path('fos_user_change_password') }}">{{ 'Change Password'|trans }}</a><br />
-  <a href="{{ path('fos_user_resetting_request') }}">{{ '[ADMIN]Reset Password'|trans }}</a><br />
+
 
   <a href="{{ path('fos_user_registration_check_email') }}">{{ '_registration_check_email'|trans }}</a><br />
   {% set token="testtoken" %}
@@ -51,7 +52,7 @@
   <a href="{{ path('fos_user_resetting_send_email') }}">{{ '_resetting_send_email'|trans }}</a><br />
   <a href="{{ path('fos_user_resetting_check_email') }}">{{ 'Reset Check Email'|trans }}</a><br />
   <a href="{{ path('fos_user_resetting_reset', {'token': token}) }}">{{ 'fos_user_resetting_reset'|trans }}</a><br />
-  
+  {% endblock %}
   </div>
   <!-- sidebar end -->
 

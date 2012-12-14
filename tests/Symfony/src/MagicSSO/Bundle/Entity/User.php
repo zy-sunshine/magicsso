@@ -23,4 +23,44 @@ class User extends BaseUser
         parent::__construct();
         // your own logic
     }
+
+    /**
+     * @ORM\OneToOne(targetEntity="Profile", inversedBy="user")
+     * @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     */
+    private $profile;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param MagicSSO\Bundle\Entity\Profile $profile
+     * @return User
+     */
+    public function setProfile(\MagicSSO\Bundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+    
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return MagicSSO\Bundle\Entity\Profile 
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }
